@@ -50,6 +50,15 @@ def nb_min(password):
 
     return nombre_minuscule
 
+#1
+def nb_min(password):
+    nombre_minuscule = 0
+    for carac in password:
+        if ord(carac) >= 97 and ord(carac) <= 122:
+            nombre_minuscule +=1
+
+    return nombre_minuscule
+
 def nb_maj(password):
     nombre_majuscule = 0
     for carac in password:
@@ -90,15 +99,25 @@ def long_maj(password):
             long_maj_boucle = 0
     return longueur_maj
 
+def score(password):
+    bonus = (len(password)*4) + (nb_maj(password)*2) + (nb_min(password)*3) + (nb_alpha(password)*5)
+    penalite = (long_min(password)*2) + (long_maj(password)*3)
+    score = bonus - penalite
+    return score
+
 if __name__ == '__main__':
     """
     mot = input("entrez un mot :")
     print(palindrome(mot))
 
-        """
-    ps = 'MAL-LDKHHIHIOD-JH'
-    print(nb_min(ps))
-    print(nb_maj(ps))
-    print(nb_alpha(ps))
-    print(long_min(ps))
-    print(long_maj(ps))
+    chaine = input('Ecrivez un message ')
+    print(crypter((chaine)))
+    """
+    pw = input('Donner votre mot de passe ')
+    # print(len(pw))
+    # print(nb_min(pw))
+    # print(nb_maj(pw))
+    # print(nb_alpha(pw))
+    # print(long_min(pw))
+    # print(long_maj(pw))
+    print(score(pw))
